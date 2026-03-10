@@ -1,60 +1,162 @@
+/* базові стилі */
 
-
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f6f8;
-     height: 100%;
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#f5f1ea;
 }
 
-.header {
-    background: #5da492;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-h1{
-    text-align: left;
-}
-.container {
-    display: flex;
+/* HEADER */
+
+header{
+background:#c8a97e;
+color:white;
+
+padding:20px 20px;
+
+font-size:18px;
+font-weight:bold;
+
+box-shadow:0 2px 10px rgba(0,0,0,0.2);
 }
 
-.menu {
-    width: 200px;
-  background: #e7e7e7;
-    padding: 15px;
+/* ОСНОВНИЙ КОНТЕЙНЕР */
+
+.page{
+display:flex;
+min-height:100vh;
 }
 
-.menu ul {
-    list-style: none;
-    padding: 0;
+/* ЛІВЕ МЕНЮ */
+
+nav{
+width:220px;
+
+background:#f3eee7;
+
+padding:30px 20px;
+
+box-shadow:2px 0 10px rgba(0,0,0,0.05);
 }
 
-.menu li {
-    margin-bottom: 10px;
+nav a{
+display:block;
 
-}
-.menu a:hover{
-    color:#5da492;
-}
+padding:12px 10px;
 
-.menu a {
-    text-decoration: none;
-    color: #20130a;
-    font-weight: bold;
-}
+margin-bottom:10px;
 
-.content {
-    flex: 1;
-    padding: 20px;
-    background: white;
+text-decoration:none;
+
+color:#5c4b3f;
+
+font-weight:500;
+
+border-radius:6px;
+
+transition:0.2s;
 }
 
-.footer {
-    background:  #5da492;
-    color: white;
-    text-align: center;
-    padding: 15px;
+nav a:hover{
+background:#c8a97e;
+color:white;
+}
+
+/* КОНТЕНТ */
+
+main{
+flex:1;
+
+padding:40px;
+
+background:#f5f1ea;
+}
+
+/* HERO БЛОК */
+
+.hero{
+display:flex;
+
+align-items:center;
+justify-content:space-between;
+
+gap:40px;
+
+padding:60px;
+
+background:#efe8de;
+
+border-radius:10px;
+}
+
+/* текст */
+
+.hero-text{
+max-width:500px;
+}
+
+.hero-text h1{
+font-size:48px;
+
+color:#4b3a2f;
+
+margin-bottom:20px;
+}
+
+.hero-text p{
+font-size:18px;
+
+color:#6b5a4e;
+
+margin-bottom:25px;
+}
+
+/* кнопка */
+
+.hero-btn{
+display:inline-block;
+
+padding:14px 28px;
+
+background:#c8a97e;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:8px;
+
+font-weight:bold;
+
+transition:0.3s;
+}
+
+.hero-btn:hover{
+background:#b89667;
+}
+
+/* картинка */
+
+.hero-image img{
+max-width:500px;
+
+width:100%;
+
+height:auto;
+
+border-radius:20px;
+}
+
+/* FOOTER */
+
+footer{
+background:#c8a97e;
+
+color:white;
+
+text-align:center;
+
+padding:20px;
+
+font-size:16px;
 }

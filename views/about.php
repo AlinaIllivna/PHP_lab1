@@ -1,7 +1,6 @@
-<?php include 'header.php'; ?>
-<?php include 'left_menu.php'; ?>
 
-<main class="content">
+
+
     <h2>Про сайт</h2>
 
     <p>
@@ -12,6 +11,5 @@
     <p>
         Ми гарантуємо свіжість продукції та швидку доставку.
     </p>
-</main>
 
-<?php include 'footer.php'; ?>
+
