@@ -1,162 +1,389 @@
-/* базові стилі */
+/* ================== */
+/* КОЛЬОРИ */
+/* ================== */
 
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#f5f1ea;
+:root {
+    --accent: rgb(128, 198, 124);
+    --accent-hover: 	#3CB371;
+    --dark: #1f1f1f;
+    --bg: #ffffff;
+    --soft: #f7f7f7;
+    --beige: #f5f1ea;
+    --card: #ffffff;
+    --border: #e5e5e5;
 }
 
+/* ================== */
+/* БАЗА */
+/* ================== */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+}
+
+/* ================== */
 /* HEADER */
+/* ================== */
 
-header{
-background:#c8a97e;
-color:white;
-
-padding:20px 20px;
-
-font-size:18px;
-font-weight:bold;
-
-box-shadow:0 2px 10px rgba(0,0,0,0.2);
+header {
+    background: var(--accent);
+    color: white;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
-/* ОСНОВНИЙ КОНТЕЙНЕР */
-
-.page{
-display:flex;
-min-height:100vh;
+.title-h {
+    margin: 0;
+    font-size: 26px;
+    font-weight: bold;
 }
 
-/* ЛІВЕ МЕНЮ */
+/* ================== */
+/* ОСНОВА */
+/* ================== */
 
-nav{
-width:220px;
-
-background:#f3eee7;
-
-padding:30px 20px;
-
-box-shadow:2px 0 10px rgba(0,0,0,0.05);
+.page {
+    display: flex;
+    min-height: 100vh;
 }
 
-nav a{
-display:block;
+/* ================== */
+/* МЕНЮ */
+/* ================== */
 
-padding:12px 10px;
-
-margin-bottom:10px;
-
-text-decoration:none;
-
-color:#5c4b3f;
-
-font-weight:500;
-
-border-radius:6px;
-
-transition:0.2s;
+nav {
+    width: 200px;
+    background: rgb(128, 198, 124,0.2);
+    padding: 30px 20px;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.05);
 }
 
-nav a:hover{
-background:#c8a97e;
-color:white;
+nav a {
+    display: block;
+    padding: 12px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    border-radius: 8px;
+    transition: 0.25s;
 }
 
+nav a:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* ================== */
 /* КОНТЕНТ */
+/* ================== */
 
-main{
-flex:1;
-
-padding:40px;
-
-background:#f5f1ea;
+main {
+    flex: 1;
+    padding: 0;
+    background: var(--bg);
 }
 
-/* HERO БЛОК */
+/* ================== */
+/* HERO */
+/* ================== */
 
-.hero{
-display:flex;
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
 
-align-items:center;
-justify-content:space-between;
+    min-height: 100vh;
 
-gap:40px;
+    padding: 10px 30px;
+    
 
-padding:60px;
-
-background:#efe8de;
-
-border-radius:10px;
+    background: var(--soft);
 }
 
-/* текст */
-
-.hero-text{
-max-width:500px;
+.hero-text {
+    max-width: 600px;
+    margin-left: 20px;
 }
 
-.hero-text h1{
-font-size:48px;
-
-color:#4b3a2f;
-
-margin-bottom:20px;
+.hero-text h1 {
+    font-size: 40px;
+    color: var(--dark);
+    margin-bottom: 20px;
 }
 
-.hero-text p{
-font-size:18px;
+.hero-text p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 25px;
+}
 
-color:#6b5a4e;
+/* ================== */
+/* КНОПКА */
+/* ================== */
 
-margin-bottom:25px;
+.hero-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background: var(--accent-hover);
+}
+
+.hero-btn:active {
+    transform: scale(0.98);
+}
+
+/* ================== */
+/* КАРТИНКА */
+/* ================== */
+
+.hero-image img {
+    max-width: 550px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ================== */
+/* FOOTER */
+/* ================== */
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ================== */
+/* ФОРМА */
+/* ================== */
+
+.form-container {
+    background: var(--card);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    animation: fadeIn 0.6s ease;
+}
+
+.form-container h2 {
+    color: var(--dark);
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #444;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 15px;
+    background: white;
+    transition: 0.2s;
+}
+
+.form-group input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255,183,3,0.2);
+    outline: none;
+}
+
+.form-button {
+    background: var(--accent);
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 14px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* ================== */
+/* ПОМИЛКИ */
+/* ================== */
+
+.error-box {
+    background: #ffe5e5;
+    color: #a33;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* ================== */
+/* АНІМАЦІЯ */
+/* ================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+li {
+    list-style: none;
+}
+
+/* ================== */
+/* КАБІНЕТ */
+/* ================== */
+
+.cabinet {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 60px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    animation: fadeIn 0.5s ease;
+}
+
+.cabinet h2 {
+    color: var(--dark);
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.cabinet-user {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.logout-btn {
+    padding: 12px 24px;
+    background: var(--accent);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+
+/* ================== */
+/* SUCCESS PAGE */
+/* ================== */
+
+.success-box {
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 80px auto;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    animation: fadeIn 0.5s ease;
+}
+
+.success-box h2 {
+    font-size: 30px;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.success-box p {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 25px;
 }
 
 /* кнопка */
 
-.hero-btn{
-display:inline-block;
-
-padding:14px 28px;
-
-background:#c8a97e;
-
-color:white;
-
-text-decoration:none;
-
-border-radius:8px;
-
-font-weight:bold;
-
-transition:0.3s;
+.success-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.hero-btn:hover{
-background:#b89667;
+.success-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
 }
 
-/* картинка */
+/* ================== */
+/* ABOUT */
+/* ================== */
 
-.hero-image img{
-max-width:500px;
-
-width:100%;
-
-height:auto;
-
-border-radius:20px;
+.about-box {
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    max-width: 700px;
+    margin: 60px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    animation: fadeIn 0.5s ease;
 }
 
-/* FOOTER */
+.about-box h2 {
+    font-size: 32px;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
 
-footer{
-background:#c8a97e;
+.about-box p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
 
-color:white;
+.required {
+    color: red;
+    margin-left: 4px;
+}
 
-text-align:center;
-
-padding:20px;
-
-font-size:16px;
+.registration_h2{
+   margin-left: 50px;
 }

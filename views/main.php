@@ -13,7 +13,7 @@ Smak & Opto — широкий асортимент продуктів для м
 </div>
 
 <div class="hero-image">
-<img src="img/main-photo.png" alt="Продукти">
+<img src="img/main_photo.jpg" alt="Продукти">
 </div>
 
 </section>
