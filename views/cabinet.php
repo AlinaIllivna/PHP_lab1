@@ -3,7 +3,7 @@
     <h2>Кабінет</h2>
 
     <p class="cabinet-user">
-        Ви увійшли як: <b><?= $_SESSION["user"] ?></b>
+        Ви увійшли як: <b><?= $_SESSION["login"] ?></b>
     </p>
 
     <form method="POST" action="index.php?action=logout">

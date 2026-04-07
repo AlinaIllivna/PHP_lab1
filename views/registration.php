@@ -1,7 +1,8 @@
 <?php
 
+require_once("./connection.php");
+
 $errors = [];
-$success = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -11,69 +12,78 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["email"] ?? "";
     $pib = $_POST["pib"] ?? "";
 
-    //  ЛОГІН
+    // 🔹 ЛОГІН
     if (!preg_match("/^[a-zA-Zа-яА-ЯіІїЇєЄ0-9_-]{4,}$/u", $login)) {
         $errors[] = "Логін має бути мінімум 4 символи і містити лише букви, цифри, _ або -";
     }
 
-    //  ПАРОЛЬ
+    // 🔹 ПАРОЛЬ
     if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/", $password)) {
         $errors[] = "Пароль має містити мінімум 7 символів, великі, малі букви і цифри";
     }
 
-    //  ПОВТОР ПАРОЛЯ
+    // 🔹 ПОВТОР ПАРОЛЯ
     if ($password !== $password2) {
         $errors[] = "Паролі не співпадають";
     }
 
-    //  EMAIL
-    // стандартна перевірка
+    // 🔹 EMAIL
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Невірний email";
-        }
-
-// додаткова перевірка (без дивних символів)
+    }
     elseif (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
         $errors[] = "Email містить недопустимі символи";
-        }
+    }
 
-    //  ПІБ (твій варіант)
+    // 🔹 ПІБ
     if (!empty($pib)) {
 
-    if (strlen($pib) > 255) {
-        $errors[] = "ПІБ не може перевищувати 255 символів";
+        if (strlen($pib) > 255) {
+            $errors[] = "ПІБ не може перевищувати 255 символів";
+        }
+
+        if (!preg_match("/^[A-Za-zА-Яа-яІіЇїЄє'’.\- ]+$/u", $pib)) {
+            $errors[] = "ПІБ містить недопустимі символи";
+        }
+
+        if (!preg_match("/^(
+            [A-Za-zА-Яа-яІіЇїЄє'’\-]+\\s
+            [A-Za-zА-Яа-яІіЇїЄє'’\-]+\\s
+            [A-Za-zА-Яа-яІіЇїЄє'’\-]+
+            |
+            [A-Za-zА-Яа-яІіЇїЄє'’\-]+\\s
+            [A-ZА-ЯІЇЄ]\\.[A-ZА-ЯІЇЄ]\\.
+            |
+            [A-ZА-ЯІЇЄ]\\.[A-ZА-ЯІЇЄ]\\.\\s
+            [A-Za-zА-Яа-яІіЇїЄє'’\-]+
+        )$/ux", $pib)) {
+            $errors[] = "Невірний формат ПІБ";
+        }
     }
 
-    // дозволені символи
-    if (!preg_match("/^[A-Za-zА-Яа-яІіЇїЄє'’.\- ]+$/u", $pib)) {
-        $errors[] = "ПІБ містить недопустимі символи";
+    // 🔹 ПЕРЕВІРКА ЧИ Є КОРИСТУВАЧ
+    $query = "SELECT id FROM users WHERE login='$login' LIMIT 1";
+    $result = mysqli_query($link, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $errors[] = "Користувач з таким логіном вже існує";
     }
 
-    // формат (3 слова або ініціали)
-    if (!preg_match("/^(
-        [A-Za-zА-Яа-яІіЇїЄє'’\-]+\\s
-        [A-Za-zА-Яа-яІіЇїЄє'’\-]+\\s
-        [A-Za-zА-Яа-яІіЇїЄє'’\-]+
-        |
-        [A-Za-zА-Яа-яІіЇїЄє'’\-]+\\s
-        [A-ZА-ЯІЇЄ]\\.[A-ZА-ЯІЇЄ]\\.
-        |
-        [A-ZА-ЯІЇЄ]\\.[A-ZА-ЯІЇЄ]\\.\\s
-        [A-Za-zА-Яа-яІіЇїЄє'’\-]+
-    )$/ux", $pib)) {
-        $errors[] = "Невірний формат ПІБ";
-    }
-}
-   
-
-    //  якщо все ок
+    //  ЯКЩО ВСЕ ОК → ДОДАЄМО В БД
     if (empty($errors)) {
 
-    $_SESSION["user"] = $login; // або email
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    header("Location: index.php?action=registration_successful");
-    exit();
-}
+        $query = "INSERT INTO users (login, password, email, pib) 
+                  VALUES ('$login', '$hashedPassword', '$email', '$pib')";
+
+        mysqli_query($link, $query);
+
+        $_SESSION["login"] = $login;
+
+        header("Location: index.php?action=registration_successful");
+        exit();
+    }
 }
 ?>
 
@@ -121,6 +131,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <button class="form-button" type="submit">
         Зареєструватися
     </button>
+
+    <p>
+    Вже маєш акаунт?
+    <a href="index.php?action=login">Увійти</a>
+</p>
 
 </form>
 
