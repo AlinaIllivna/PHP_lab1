@@ -8,7 +8,7 @@ Smak & Opto — широкий асортимент продуктів для м
 кафе та ресторанів за оптовими цінами.
 </p>
 
-<a href="#" class="hero-btn">Переглянути товари</a>
+<a href="index.php?action=products" class="hero-btn">Переглянути товари</a>
 
 </div>
 

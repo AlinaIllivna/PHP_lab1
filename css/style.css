@@ -409,3 +409,229 @@ li {
     color: #3b82f6;
     text-decoration: none;
 }
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+}
+.status-badge.admin {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.status-badge.user {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.cabinet-actions ul {
+    list-style: none;
+    padding: 0;
+}
+.cabinet-actions li {
+    margin: 10px 0;
+}
+
+
+
+/* 
+----------------------- */
+/* Контейнер для сітки */
+
+.products-grid {
+    display: grid !important;
+    /* Створює колонки, які автоматично підлаштовуються під ширину екрану */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 30px !important;
+    padding: 20px 0;
+}
+
+/* Обмежуємо розмір картки */
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ФОТО: Контейнер для фото */
+.product-img-container {
+    width: 100% !important;
+    height: 250px !important; /* Фіксована висота для всіх карток */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Сама картинка всередині контейнера */
+.product-img-container img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important; /* Картинка впишеться, не розтягуючись */
+    width: auto !important; /* Скасовуємо розтягування на всю ширину */
+}
+
+/* Інфо всередині картки */
+.product-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.product-price {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.product-date {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+/* Кнопки */
+.product-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-view {
+    background: #007bff;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.admin-btns a {
+    text-decoration: none;
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+/* Стиль для прихованих товарів (для адміна) */
+.hidden-product {
+    opacity: 0.7;
+    border: 1px dashed #999;
+}
+
+.status-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 0, 0.7);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+/* -------------- */
+/* додавання товару */
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.crud-form .form-group {
+    margin-bottom: 15px;
+}
+
+.crud-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.crud-form input, .crud-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Важливо для width: 100% */
+}
+
+.required {
+    color: red;
+}
+
+.success-box {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.error-box {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* Стиль для прихованої картки */
+.product-card.draft-card {
+    background-color: #f2f2f2; /* Світло-сірий фон */
+    border: 1px dashed #ccc;   /* Пунктирна рамка */
+    opacity: 0.8;              /* Легка прозорість */
+    filter: grayscale(40%);    /* Можна навіть трохи прибрати насиченість кольорів */
+}
+
+/* Напис "Приховано" поверх картинки */
+.badge-hidden {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+/* Зміна кольору тексту для прихованої картки, щоб він не був таким яскравим */
+.draft-card .product-info h3 {
+    color: #777;
+}
+
+.draft-card .product-price {
+    color: #888 !important; /* Робимо ціну менш яскравою */
+}
+
+.btn-add-main{
+     color: black;
+     text-decoration: none;
+     padding: 30px;
+}
+.btn-add-main:hover{
+    color: #3b82f6;
+}
+
+.products-header h2{
+    /* padding: 30px; */
+    text-align: center;
+    font-size: 40px;
+}
