@@ -635,3 +635,168 @@ li {
     text-align: center;
     font-size: 40px;
 }
+
+
+/* коментарі */
+.comments-block {
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    height: 90px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.comment-form textarea:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76,175,80,0.3);
+}
+
+.comment-form button {
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-bottom: 30px;
+}
+
+.comment-form button:hover {
+    background: #43a047;
+}
+
+.comment {
+    background: rgba(255, 255, 255, 0.795);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.comment-user {
+    font-weight: bold;
+}
+
+.comment-date {
+    color: gray;
+    font-size: 12px;
+}
+
+.comment-text {
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+/* лайки */
+.like-block {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 140px;
+    margin-bottom: 20px;
+}
+
+.like-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+    border: 1px solid #ddd;
+}
+
+/* НЕ лайкнуто */
+.like-btn.not-liked {
+    background: #fff;
+    color: #555;
+}
+
+.like-btn.not-liked:hover {
+    background: #f0f0f0;
+}
+
+/* ЛАЙКНУТО */
+.like-btn.liked {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+}
+
+.like-btn.liked:hover {
+    background: #e63956;
+}
+
+.like-count {
+    font-size: 14px;
+    color: #555;
+}
+
+
+
+.pagination {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+     margin-bottom: 25px;
+}
+
+.pagination a,
+.pagination span {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    transition: 0.2s;
+}
+
+/* hover */
+.pagination a:hover {
+    background: #2196F3;
+    color: white;
+    border-color: #2196F3;
+}
+
+/* активна сторінка */
+.pagination .active {
+    background: #2196F3;
+    color: white;
+    border-color: #2196F3;
+    font-weight: bold;
+}
+
+/* неактивні */
+.pagination .disabled {
+    color: #aaa;
+    border-color: #eee;
+    cursor: default;
+}
+
+.pagination a:active {
+    transform: scale(0.95);
+}

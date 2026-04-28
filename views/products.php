@@ -1,12 +1,29 @@
 <?php
+require_once 'connection.php';
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+$limit = 5; //  5  
+$offset = ($page - 1) * $limit;
+
 $is_admin = (isset($_SESSION['admin']) && $_SESSION['admin'] == 1);
 
 // Запит: адмін бачить все, користувач — тільки visible=1
 if ($is_admin) {
-    $sql = "SELECT * FROM products ORDER BY date DESC";
+    $sql = "SELECT * FROM products ORDER BY date DESC LIMIT $limit OFFSET $offset";
 } else {
-    $sql = "SELECT * FROM products WHERE visible = 1 ORDER BY date DESC";
+    $sql = "SELECT * FROM products ORDER BY date DESC LIMIT $limit OFFSET $offset";
 }
+// рахуємо кількість сторінок 
+if ($is_admin) {
+    $total = mysqli_fetch_row(mysqli_query($link,
+        "SELECT COUNT(*) FROM products"
+    ))[0];
+} else {
+    $total = mysqli_fetch_row(mysqli_query($link,
+        "SELECT COUNT(*) FROM products WHERE visible = 1"
+    ))[0];
+}
+$pages = ceil($total / $limit);
 
 $result = mysqli_query($link, $sql);
 ?>
@@ -51,4 +68,33 @@ $result = mysqli_query($link, $sql);
     </div>
 <?php endwhile; ?>
     </div>
+
+
+</div>
+
+<div class="pagination">
+
+    <!-- Перша -->
+    <?php if ($page > 1): ?>
+        <a href="index.php?action=products&page=1">Перша</a>
+    <?php else: ?>
+        <span class="disabled">Перша</span>
+    <?php endif; ?>
+
+    <!-- Номери -->
+    <?php for ($i = 1; $i <= $pages; $i++): ?>
+        <?php if ($i == $page): ?>
+            <span class="active"><?= $i ?></span>
+        <?php else: ?>
+            <a href="index.php?action=products&page=<?= $i ?>"><?= $i ?></a>
+        <?php endif; ?>
+    <?php endfor; ?>
+
+    <!-- Остання -->
+    <?php if ($page < $pages): ?>
+        <a href="index.php?action=products&page=<?= $pages ?>">Остання</a>
+    <?php else: ?>
+        <span class="disabled">Остання</span>
+    <?php endif; ?>
+
 </div>
